@@ -1,0 +1,149 @@
+aws_region  = "us-east-1"
+project     = "demo"
+environment = "test"
+
+tags = {
+  Owner       = "platform-team"
+  CostCenter  = "cc-12345"
+  Application = "foundation-network"
+}
+
+vpc_name                             = "demo-test-vpc"
+vpc_cidr                             = "10.10.0.0/16"
+instance_tenancy                     = "default"
+enable_dns_support                   = true
+enable_dns_hostnames                 = true
+assign_generated_ipv6_cidr_block     = false
+enable_network_address_usage_metrics = false
+create_internet_gateway              = true
+
+public_subnets = [
+  {
+    name                                           = "demo-test-public-use1a"
+    cidr_block                                     = "10.10.0.0/24"
+    availability_zone                              = "us-east-1a"
+    map_public_ip_on_launch                        = true
+    assign_ipv6_address_on_creation                = false
+    private_dns_hostname_type_on_launch            = "ip-name"
+    enable_resource_name_dns_a_record_on_launch    = false
+    enable_resource_name_dns_aaaa_record_on_launch = false
+    tags = {
+      Purpose = "ingress"
+    }
+  },
+  {
+    name                                           = "demo-test-public-use1b"
+    cidr_block                                     = "10.10.1.0/24"
+    availability_zone                              = "us-east-1b"
+    map_public_ip_on_launch                        = true
+    assign_ipv6_address_on_creation                = false
+    private_dns_hostname_type_on_launch            = "ip-name"
+    enable_resource_name_dns_a_record_on_launch    = false
+    enable_resource_name_dns_aaaa_record_on_launch = false
+    tags = {
+      Purpose = "ingress"
+    }
+  }
+]
+
+private_subnets = [
+  {
+    name                                           = "demo-test-private-use1a"
+    cidr_block                                     = "10.10.10.0/24"
+    availability_zone                              = "us-east-1a"
+    map_public_ip_on_launch                        = false
+    assign_ipv6_address_on_creation                = false
+    private_dns_hostname_type_on_launch            = "ip-name"
+    enable_resource_name_dns_a_record_on_launch    = false
+    enable_resource_name_dns_aaaa_record_on_launch = false
+    tags = {
+      Purpose = "app"
+    }
+  },
+  {
+    name                                           = "demo-test-private-use1b"
+    cidr_block                                     = "10.10.11.0/24"
+    availability_zone                              = "us-east-1b"
+    map_public_ip_on_launch                        = false
+    assign_ipv6_address_on_creation                = false
+    private_dns_hostname_type_on_launch            = "ip-name"
+    enable_resource_name_dns_a_record_on_launch    = false
+    enable_resource_name_dns_aaaa_record_on_launch = false
+    tags = {
+      Purpose = "app"
+    }
+  }
+]
+
+database_subnets = [
+  {
+    name                                           = "demo-test-database-use1a"
+    cidr_block                                     = "10.10.20.0/24"
+    availability_zone                              = "us-east-1a"
+    map_public_ip_on_launch                        = false
+    assign_ipv6_address_on_creation                = false
+    private_dns_hostname_type_on_launch            = "ip-name"
+    enable_resource_name_dns_a_record_on_launch    = false
+    enable_resource_name_dns_aaaa_record_on_launch = false
+    tags = {
+      Purpose = "database"
+    }
+  },
+  {
+    name                                           = "demo-test-database-use1b"
+    cidr_block                                     = "10.10.21.0/24"
+    availability_zone                              = "us-east-1b"
+    map_public_ip_on_launch                        = false
+    assign_ipv6_address_on_creation                = false
+    private_dns_hostname_type_on_launch            = "ip-name"
+    enable_resource_name_dns_a_record_on_launch    = false
+    enable_resource_name_dns_aaaa_record_on_launch = false
+    tags = {
+      Purpose = "database"
+    }
+  }
+]
+
+enable_nat_gateway                = true
+nat_gateway_subnet_names          = ["demo-test-public-use1a"]
+default_nat_gateway_subnet_name   = "demo-test-public-use1a"
+create_private_route_table_per_az = false
+private_subnet_nat_gateway_map    = {}
+
+create_database_subnet_group      = true
+database_subnet_group_name        = "demo-test-db-subnet-group"
+database_subnet_group_description = "Database subnet group for demo test VPC"
+
+vpc_tags = {
+  Component = "vpc"
+}
+internet_gateway_tags = {
+  Component = "internet-gateway"
+}
+public_subnet_tags = {
+  NetworkTier = "public"
+}
+private_subnet_tags = {
+  NetworkTier = "private"
+}
+database_subnet_tags = {
+  NetworkTier = "database"
+}
+public_route_table_tags = {
+  Component = "public-route-table"
+}
+private_route_table_tags = {
+  Component = "private-route-table"
+}
+database_route_table_tags = {
+  Component = "database-route-table"
+}
+nat_eip_tags = {
+  Component = "nat-eip"
+}
+nat_gateway_tags = {
+  Component = "nat-gateway"
+}
+database_subnet_group_tags = {
+  Component = "db-subnet-group"
+}
