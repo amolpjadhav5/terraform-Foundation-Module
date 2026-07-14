@@ -28,7 +28,7 @@ variable "vpc_name" {
 variable "vpc_cidr" {
   description = "IPv4 CIDR block for the VPC."
   type        = string
-  default = "10.0.0.0/16"
+  default     = "10.0.0.0/16"
 }
 
 variable "instance_tenancy" {
@@ -70,15 +70,15 @@ variable "create_internet_gateway" {
 variable "public_subnets" {
   description = "Public subnet definitions. Name must be unique."
   type = list(object({
-    name                                            = string
-    cidr_block                                      = string
-    availability_zone                               = string
-    map_public_ip_on_launch                         = optional(bool, true)
-    assign_ipv6_address_on_creation                 = optional(bool, false)
-    private_dns_hostname_type_on_launch             = optional(string, "ip-name")
-    enable_resource_name_dns_a_record_on_launch     = optional(bool, false)
-    enable_resource_name_dns_aaaa_record_on_launch  = optional(bool, false)
-    tags                                            = optional(map(string), {})
+    name                                           = string
+    cidr_block                                     = string
+    availability_zone                              = string
+    map_public_ip_on_launch                        = optional(bool, true)
+    assign_ipv6_address_on_creation                = optional(bool, false)
+    private_dns_hostname_type_on_launch            = optional(string, "ip-name")
+    enable_resource_name_dns_a_record_on_launch    = optional(bool, false)
+    enable_resource_name_dns_aaaa_record_on_launch = optional(bool, false)
+    tags                                           = optional(map(string), {})
   }))
   default = []
 }
@@ -86,15 +86,15 @@ variable "public_subnets" {
 variable "private_subnets" {
   description = "Private application subnet definitions. Name must be unique."
   type = list(object({
-    name                                            = string
-    cidr_block                                      = string
-    availability_zone                               = string
-    map_public_ip_on_launch                         = optional(bool, false)
-    assign_ipv6_address_on_creation                 = optional(bool, false)
-    private_dns_hostname_type_on_launch             = optional(string, "ip-name")
-    enable_resource_name_dns_a_record_on_launch     = optional(bool, false)
-    enable_resource_name_dns_aaaa_record_on_launch  = optional(bool, false)
-    tags                                            = optional(map(string), {})
+    name                                           = string
+    cidr_block                                     = string
+    availability_zone                              = string
+    map_public_ip_on_launch                        = optional(bool, false)
+    assign_ipv6_address_on_creation                = optional(bool, false)
+    private_dns_hostname_type_on_launch            = optional(string, "ip-name")
+    enable_resource_name_dns_a_record_on_launch    = optional(bool, false)
+    enable_resource_name_dns_aaaa_record_on_launch = optional(bool, false)
+    tags                                           = optional(map(string), {})
   }))
   default = []
 }
@@ -102,15 +102,15 @@ variable "private_subnets" {
 variable "database_subnets" {
   description = "Isolated database subnet definitions. Name must be unique."
   type = list(object({
-    name                                            = string
-    cidr_block                                      = string
-    availability_zone                               = string
-    map_public_ip_on_launch                         = optional(bool, false)
-    assign_ipv6_address_on_creation                 = optional(bool, false)
-    private_dns_hostname_type_on_launch             = optional(string, "ip-name")
-    enable_resource_name_dns_a_record_on_launch     = optional(bool, false)
-    enable_resource_name_dns_aaaa_record_on_launch  = optional(bool, false)
-    tags                                            = optional(map(string), {})
+    name                                           = string
+    cidr_block                                     = string
+    availability_zone                              = string
+    map_public_ip_on_launch                        = optional(bool, false)
+    assign_ipv6_address_on_creation                = optional(bool, false)
+    private_dns_hostname_type_on_launch            = optional(string, "ip-name")
+    enable_resource_name_dns_a_record_on_launch    = optional(bool, false)
+    enable_resource_name_dns_aaaa_record_on_launch = optional(bool, false)
+    tags                                           = optional(map(string), {})
   }))
   default = []
 }
@@ -163,59 +163,59 @@ variable "database_subnet_group_description" {
   default     = "Managed by Terraform"
 }
 
-variable "vpc_tags" { 
-  type = map(string) 
-  default = {} 
-  description = "Additional tags for VPC." 
+variable "vpc_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags for VPC."
 }
 
-variable "internet_gateway_tags" { 
-  type = map(string) 
-  default = {} 
-  description = "Additional tags for IGW." 
- }
-variable "public_subnet_tags" { 
-  type = map(string) 
-  default = {} 
-  description = "Additional tags for public subnets." 
- }
-variable "private_subnet_tags" { 
-  type = map(string) 
-  default = {} 
-  description = "Additional tags for private subnets." 
- }
-variable "database_subnet_tags" { 
-  type = map(string) 
-  default = {} 
-  description = "Additional tags for database subnets." 
- }
-variable "public_route_table_tags" { 
-  type = map(string) 
-  default = {} 
-  description = "Additional tags for public route table." 
- }
-variable "private_route_table_tags" { 
-  type = map(string) 
-  default = {} 
-  description = "Additional tags for private route tables." 
- }
-variable "database_route_table_tags" { 
-  type = map(string) 
-  default = {} 
-  description = "Additional tags for database route table." 
- }
-variable "nat_eip_tags" { 
-  type = map(string) 
-  default = {} 
-  description = "Additional tags for NAT EIPs." 
- }
-variable "nat_gateway_tags" { 
-  type = map(string) 
-  default = {} 
-  description = "Additional tags for NAT Gateways." 
- }
-variable "database_subnet_group_tags" { 
-  type = map(string) 
-  default = {} 
-  description = "Additional tags for DB subnet group." 
- }
+variable "internet_gateway_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags for IGW."
+}
+variable "public_subnet_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags for public subnets."
+}
+variable "private_subnet_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags for private subnets."
+}
+variable "database_subnet_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags for database subnets."
+}
+variable "public_route_table_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags for public route table."
+}
+variable "private_route_table_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags for private route tables."
+}
+variable "database_route_table_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags for database route table."
+}
+variable "nat_eip_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags for NAT EIPs."
+}
+variable "nat_gateway_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags for NAT Gateways."
+}
+variable "database_subnet_group_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags for DB subnet group."
+}
