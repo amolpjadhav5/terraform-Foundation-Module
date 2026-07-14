@@ -46,7 +46,7 @@ resource "aws_internet_gateway" "this" {
 }
 
 resource "aws_subnet" "public" {
-  for_each = local.public_subnet_map
+  for_each = local.public_subnet_map || var.public_subnets > 0 ? local.public_subnet_map : {}
 
   vpc_id                                         = aws_vpc.this.id
   cidr_block                                     = each.value.cidr_block
