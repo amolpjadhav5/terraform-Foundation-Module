@@ -24,8 +24,6 @@ module "s3_endpoint" {
   # Only S3 Gateway for this example
   create_gateway    = true
   create_interface  = false
-  create_snowflake  = false
-  create_databricks = false
 
   # If not provided, the module tries to discover private* route tables
   route_table_ids = var.route_table_ids
